@@ -14,7 +14,7 @@ So… shall we start?
 ### Topic: Introduction to SQLite
 
 - Learning tool: https://sqliteonline.com
-- Sample .db file: 📦 [Download Sample .db File](https://github.com/yourusername/your-repo/raw/main/Thailand_adminboundaries.db)
+- Sample .db file: 📦 [Download Sample .db File](https://github.com/ChanikaJan/Learning_SQL/blob/main/Thailand_adminboundaries.db)
  (Thailand administrative boundaries + area data)
 
 
