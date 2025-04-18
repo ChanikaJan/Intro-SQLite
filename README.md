@@ -1,7 +1,7 @@
 # Recapping My SQL Journey with SQLite
 By CJ (Bangkok, Thailand)
 
-### 👋 Short Introduction:**   
+### 👋 Short Introduction:   
 Hi everyone! I'm CJ from Bangkok, Thailand.  
 This post is part of my learning journey
 The purpose of this post is to recap and reinforce my SQL knowledge.   
@@ -20,46 +20,63 @@ So… shall we start?
 
 
 ## 🛠️ Getting Started
-1. Go to 👉 sqliteonline.com      
-2. Click File >> Open DB and upload your sample .db file.    
+1. Go to 👉 sqliteonline.com
+
+         
+2. Click File >> Open DB and upload your sample .db file.
+
+<img src="image/Step_1.JPG" alt="Upload DB File" width="400" height="400"/>
+
+
 3. Once uploaded, the table will appear with columns like:     
-  
+
+<img src="image/Step_2.JPG" alt="CheckData" width="400" height="400"/>
+
+**💡Explanation:**    
     ADM0_EN - (Country)  
     ADM1_EN - (Province)  
     ADM2_EN - (District)  
     area_sqkm - (Area in square kilometers)  
 
 
-
 ## Basic SQL Queries in SQLite Online 💻  
-####  1. View All Records    
+###  1. View All Records    
 
     
     SELECT * FROM Thailand_adminboundaries;    
 
-    
+<img src="image/SQL_view_table.JPG" alt="SQL_view_table" width="450" height="450"/>
+
 **💡Explanation:**   
 * SELECT * tells SQL to show all columns.    
 * FROM Thailand_adminboundaries means we want the data from this specific table.  
 * Use this to preview all the data inside the table.  
+
+
+
   
-#### 2. View the First 10 Rows
+### 2. View the First 10 Rows
 
     
     SELECT * FROM Thailand_adminboundaries  
     LIMIT 10;  
 
+<img src="image/SQL_view_table10.JPG" alt="SQL_view_table10" width="450" height="450"/>
     
 **💡Explanation:**     
 * LIMIT 10 shows only the first 10 rows of the table.    
 
-#### 3. Total Area by Province
+
+
+### 3. Total Area by Province
 
     SELECT ADM1_EN AS province, 
        SUM(area_sqkm) AS total_area_sqkm
     FROM Thailand_adminboundaries
     GROUP BY ADM1_EN
     ORDER BY total_area_sqkm DESC;
+
+<img src="image/SQL_total_area_provinces.JPG" alt="SQL_total_area_provinces" width="450" height="450"/>
 
 **💡Explanation:**     
 * ADM1_EN AS province: rename this column as province in the result.  
@@ -69,7 +86,8 @@ So… shall we start?
 * DESC means descending order — from largest to smallest.  
 
 
-#### 3.1 Rounded to 2 Decimal Places 
+
+### 3.1 Rounded to 2 Decimal Places 
 
     SELECT ADM1_EN AS province, 
            ROUND(SUM(area_sqkm), 2) AS total_area_sqkm
@@ -77,22 +95,30 @@ So… shall we start?
     GROUP BY ADM1_EN
     ORDER BY total_area_sqkm DESC;
 
+<img src="image/SQL_total_area_provinces2dijits.JPG" alt="SQL_total_area_provinces2dijits" width="450" height="450"/>  
+
 **💡Explanation:**    
 * ROUND(..., 2): Rounds the total area to 2 decimal places (e.g., 1234.5678 → 1234.57).  
 
-#### 4. Total Area by District
+
+
+### 4. Total Area by District
 
     SELECT ADM1_EN AS province,
-           ADM2_EN AS district,
-           area_sqkm
+          ADM2_EN AS district,
+          ROUND(area_sqkm, 2) AS area_sqkm_district
     FROM Thailand_adminboundaries
     ORDER BY ADM1_EN;
 
+<img src="image/SQL_total_area_district2dijits.JPG" alt="SQL_total_area_district2dijits" width="450" height="450"/>  
+
 **💡Explanation:**    
 * Selects each district’s area with the related province.  
-* Sorted by area in descending order.  
+* ORDER BY ADM1_EN: Sorts the results alphabetically by province name  
 
-#### 5. Show District Areas (Rounded) in One Province Only
+
+
+### 5. Show District Areas (Rounded) in One Province Only
 
     SELECT ADM1_EN AS province,
            ADM2_EN AS district,
@@ -101,12 +127,16 @@ So… shall we start?
     WHERE ADM1_EN = 'Tak'
     ORDER BY area_sqkm_district DESC;
 
+<img src="image/SQL_filter_province.JPG" alt="SQL_filter_province" width="450" height="450"/>  
+
 **💡Explanation:**  
 * WHERE ADM1_EN = 'Tak':
 * This filters the results to only include rows where the province is Tak. You can change 'Tak' to any other province name.
 
 
-#### 6.  Count Districts in Each Province
+
+
+### 6.  Count Districts in Each Province
 
     SELECT ADM1_EN AS province,
            COUNT(ADM2_EN) AS district_count
@@ -114,10 +144,15 @@ So… shall we start?
     GROUP BY ADM1_EN
     ORDER BY district_count DESC;
 
+<img src="image/SQL_count_districts.JPG" alt="SQL_count_districts" width="450" height="450"/>  
+
 **💡Explanation:**    
 * COUNT(ADM2_EN): counts the number of districts per province.  
 
-#### 7. Top 10 Largest Districts in Thailand
+
+
+
+### 7. Top 10 Largest Districts in Thailand
 
     SELECT ADM1_EN AS province,
            ADM2_EN AS district,
@@ -126,10 +161,14 @@ So… shall we start?
     ORDER BY area_sqkm DESC
     LIMIT 10;
 
+
+<img src="image/SQL_top10_provinces.JPG" alt="SQL_top10_provinces" width="450" height="450"/>  
+
 **💡Explanation:**
 * Selects the top 10 largest districts by area in the entire country.
 
-#### 8. Calculate Total Area of Thailand
+
+### 8. Calculate Total Area of Thailand
 
     SELECT SUM(area_sqkm) AS total_area_thailand
     FROM Thailand_adminboundaries;
@@ -139,21 +178,26 @@ So… shall we start?
  * This gives you the total land area of Thailand.  
 
 
-#### 9. Count Total Number of Provinces
+### 9. Count Total Number of Provinces
 
     SELECT COUNT(DISTINCT ADM1_EN) AS total_province_count
     FROM Thailand_adminboundaries;
+
+<img src="image/SQL_count_province.JPG" alt="SQL_count_province" width="450" height="450"/>  
 
 **💡Explanation:**
 * COUNT(...): Counts the number of records.  
 * DISTINCT ADM1_EN: Ensures each province is counted only once, even if it appears in many rows (due to districts).  
 
 
-#### 10. Exporting: You can export the results to a CSV or Excel file by clicking the Export button.
 
 
+### 10. Exporting: You can export the results to a CSV or Excel file by clicking the Export button.
 
-**Final Thoughts 💬**  
+
+<img src="image/SQL_exporting.JPG" alt="SQL_exporting" width="450" height="450"/>
+
+### Final Thoughts 💬  
 Thanks for reading!  
 If you found this helpful, feel free to ⭐ the repo or leave a comment.  
 Let’s keep learning and growing together! 🌱  
