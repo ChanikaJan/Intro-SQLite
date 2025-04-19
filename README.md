@@ -48,7 +48,7 @@ So… shall we start?
 <img src="image/SQL_view_table.JPG" alt="SQL_view_table" width="450" height="450"/>
 
 **💡Explanation:**   
-* SELECT * tells SQL to show all columns.    
+* `SELECT *` tells SQL to show all columns.
 * FROM Thailand_adminboundaries means we want the data from this specific table.  
 * Use this to preview all the data inside the table.  
 
@@ -64,7 +64,7 @@ So… shall we start?
 <img src="image/SQL_view_table10.JPG" alt="SQL_view_table10" width="450" height="450"/>
     
 **💡Explanation:**     
-* LIMIT 10 shows only the first 10 rows of the table.    
+* `LIMIT 10` shows only the first 10 rows of the table.    
 
 
 
@@ -79,11 +79,11 @@ So… shall we start?
 <img src="image/SQL_total_area_provinces.JPG" alt="SQL_total_area_provinces" width="450" height="450"/>
 
 **💡Explanation:**     
-* ADM1_EN AS province: rename this column as province in the result.  
-* SUM(area_sqkm): add up all the area values per province.  
-* GROUP BY ADM1_EN: group the rows by province to calculate per-province totals.  
-* ORDER BY total_area_sqkm DESC: sort from largest to smallest area.  
-* DESC means descending order — from largest to smallest.  
+* `ADM1_EN AS province`: rename this column as province in the result.  
+* `SUM(area_sqkm)`: add up all the area values per province.  
+* `GROUP BY ADM1_EN`: group the rows by province to calculate per-province totals.  
+* `ORDER BY total_area_sqkm DESC`: sort from largest to smallest area.  
+* `DESC` means descending order — from largest to smallest.  
 
 
 
@@ -98,7 +98,7 @@ So… shall we start?
 <img src="image/SQL_total_area_provinces2dijits.JPG" alt="SQL_total_area_provinces2dijits" width="450" height="450"/>  
 
 **💡Explanation:**    
-* ROUND(..., 2): Rounds the total area to 2 decimal places (e.g., 1234.5678 → 1234.57).  
+* `ROUND(..., 2)`: Rounds the total area to 2 decimal places (e.g., 1234.5678 → 1234.57).  
 
 
 
@@ -114,7 +114,7 @@ So… shall we start?
 
 **💡Explanation:**    
 * Selects each district’s area with the related province.  
-* ORDER BY ADM1_EN: Sorts the results alphabetically by province name  
+* `ORDER BY ADM1_EN`: Sorts the results alphabetically by province name  
 
 
 
@@ -130,7 +130,7 @@ So… shall we start?
 <img src="image/SQL_filter_province.JPG" alt="SQL_filter_province" width="450" height="450"/>  
 
 **💡Explanation:**  
-* WHERE ADM1_EN = 'Tak':
+* `WHERE ADM1_EN = 'Tak'`:
 * This filters the results to only include rows where the province is Tak. You can change 'Tak' to any other province name.
 
 
@@ -147,7 +147,7 @@ So… shall we start?
 <img src="image/SQL_count_districts.JPG" alt="SQL_count_districts" width="450" height="450"/>  
 
 **💡Explanation:**    
-* COUNT(ADM2_EN): counts the number of districts per province.  
+* `COUNT(ADM2_EN)`: counts the number of districts per province.  
 
 
 
@@ -174,7 +174,7 @@ So… shall we start?
     FROM Thailand_adminboundaries;
 
 **💡Explanation:**
- * SUM(area_sqkm): adds up all area values in the dataset.  
+ * `SUM(area_sqkm)`: adds up all area values in the dataset.  
  * This gives you the total land area of Thailand.  
 
 
@@ -186,8 +186,8 @@ So… shall we start?
 <img src="image/SQL_count_province.JPG" alt="SQL_count_province" width="450" height="450"/>  
 
 **💡Explanation:**
-* COUNT(...): Counts the number of records.  
-* DISTINCT ADM1_EN: Ensures each province is counted only once, even if it appears in many rows (due to districts).  
+* `COUNT(...)`: Counts the number of records.  
+* `DISTINCT ADM1_EN`: Ensures each province is counted only once, even if it appears in many rows (due to districts).  
 
 
 
@@ -204,22 +204,22 @@ Let’s keep learning and growing together! 🌱
 
 #### 📌Common SQL Aggregate Functions 
 Function	- Description   
-MIN()	    - Returns the smallest value in a column  
-MAX()    	- Returns the largest value  
-COUNT()	  - Counts number of rows  
-SUM()	    - Adds all numeric values  
-AVG()	    - Calculates the average  
+`MIN()`	    - Returns the smallest value in a column  
+`MAX()`    	- Returns the largest value  
+`COUNT()`	  - Counts number of rows  
+`SUM()`	    - Adds all numeric values  
+`AVG()`	    - Calculates the average  
 
 #### 📌Some Essential SQL Commands  
-Command	      - What It Does  
-SELECT	      - Retrieves data from the database    
-INSERT        - INTO	Adds new data    
-UPDATE	      - Changes existing data    
-DELETE	      - Removes data    
-CREATE TABLE	- Creates a new table    
-DROP TABLE	  - Deletes a table completely    
-CREATE INDEX	- Adds an index for faster search    
-DROP INDEX	  - Removes an index    
+`Command`	     - What It Does  
+`SELECT`	      - Retrieves data from the database    
+`INSERT`       - INTO	Adds new data    
+`UPDATE`	      - Changes existing data    
+`DELETE`	      - Removes data    
+`CREATE TABLE`	- Creates a new table    
+`DROP TABLE`	  - Deletes a table completely    
+`CREATE INDEX`	- Adds an index for faster search    
+`DROP INDEX`	  - Removes an index    
 
 
 #### 📚 Keep Learning!  
