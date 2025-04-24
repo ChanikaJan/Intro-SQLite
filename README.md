@@ -8,7 +8,7 @@ The purpose of this post is to recap and reinforce my SQL knowledge.
 Personally, I find that taking notes and sharing them is one of the best ways to review and reflect, so that's how this post came !!  
 So… shall we start?
 
-
+---
 
 
 ### Topic: Introduction to SQLite
@@ -17,7 +17,7 @@ So… shall we start?
 - Sample .db file: 📦 [Download Sample .db File](https://github.com/ChanikaJan/Learning_SQL/blob/main/Thailand_adminboundaries.db)
  (Thailand administrative boundaries + area data)
 
-
+---
 
 ## 🛠️ Getting Started
 1. Go to 👉 sqliteonline.com
@@ -38,14 +38,18 @@ So… shall we start?
     ADM2_EN - (District)  
     area_sqkm - (Area in square kilometers)  
 
-
+---
 ## Basic SQL Queries in SQLite Online 💻  
 ###  1. View All Records    
 
     
     SELECT * FROM Thailand_adminboundaries;    
 
-<img src="image/SQL_view_table.JPG" alt="SQL_view_table" width="450" height="450"/>
+<details>
+  <summary><strong>Click to view the output</strong></summary>
+  <img src="image/SQL_view_table.JPG" alt="SQL_view_table" width="450" height="450"/>
+</details>
+
 
 **💡Explanation:**   
 * `SELECT *` tells SQL to show all columns.
@@ -61,7 +65,10 @@ So… shall we start?
     SELECT * FROM Thailand_adminboundaries  
     LIMIT 10;  
 
-<img src="image/SQL_view_table10.JPG" alt="SQL_view_table10" width="450" height="450"/>
+<details>
+  <summary><strong>Click to view the output</strong></summary>
+ <img src="image/SQL_view_table10.JPG" alt="SQL_view_table10" width="450" height="450"/>
+</details>
     
 **💡Explanation:**     
 * `LIMIT 10` shows only the first 10 rows of the table.    
@@ -76,7 +83,12 @@ So… shall we start?
     GROUP BY ADM1_EN
     ORDER BY total_area_sqkm DESC;
 
-<img src="image/SQL_total_area_provinces.JPG" alt="SQL_total_area_provinces" width="450" height="450"/>
+
+<details>
+  <summary><strong>Click to view the output</strong></summary>
+ <img src="image/SQL_total_area_provinces.JPG" alt="SQL_total_area_provinces" width="450" height="450"/>
+</details>
+
 
 **💡Explanation:**     
 * `ADM1_EN AS province`: rename this column as province in the result.  
@@ -95,7 +107,12 @@ So… shall we start?
     GROUP BY ADM1_EN
     ORDER BY total_area_sqkm DESC;
 
+    
+<details>
+  <summary><strong>Click to view the output</strong></summary>
 <img src="image/SQL_total_area_provinces2dijits.JPG" alt="SQL_total_area_provinces2dijits" width="450" height="450"/>  
+</details>
+
 
 **💡Explanation:**    
 * `ROUND(..., 2)`: Rounds the total area to 2 decimal places (e.g., 1234.5678 → 1234.57).  
@@ -110,7 +127,10 @@ So… shall we start?
     FROM Thailand_adminboundaries
     ORDER BY ADM1_EN;
 
-<img src="image/SQL_total_area_district2dijits.JPG" alt="SQL_total_area_district2dijits" width="450" height="450"/>  
+<details>
+  <summary><strong>Click to view the output</strong></summary>
+<img src="image/SQL_total_area_district2dijits.JPG" alt="SQL_total_area_district2dijits" width="450" height="450"/>   
+</details>
 
 **💡Explanation:**    
 * Selects each district’s area with the related province.  
@@ -127,7 +147,10 @@ So… shall we start?
     WHERE ADM1_EN = 'Tak'
     ORDER BY area_sqkm_district DESC;
 
-<img src="image/SQL_filter_province.JPG" alt="SQL_filter_province" width="450" height="450"/>  
+<details>
+  <summary><strong>Click to view the output</strong></summary>
+ <img src="image/SQL_filter_province.JPG" alt="SQL_filter_province" width="450" height="450"/>  
+</details>
 
 **💡Explanation:**  
 * `WHERE ADM1_EN = 'Tak'`:
@@ -144,7 +167,10 @@ So… shall we start?
     GROUP BY ADM1_EN
     ORDER BY district_count DESC;
 
+<details>
+  <summary><strong>Click to view the output</strong></summary>
 <img src="image/SQL_count_districts.JPG" alt="SQL_count_districts" width="450" height="450"/>  
+</details>
 
 **💡Explanation:**    
 * `COUNT(ADM2_EN)`: counts the number of districts per province.  
@@ -161,8 +187,11 @@ So… shall we start?
     ORDER BY area_sqkm DESC
     LIMIT 10;
 
-
+<details>
+  <summary><strong>Click to view the output</strong></summary>
 <img src="image/SQL_top10_provinces.JPG" alt="SQL_top10_provinces" width="450" height="450"/>  
+</details>
+
 
 **💡Explanation:**
 * Selects the top 10 largest districts by area in the entire country.
@@ -182,8 +211,12 @@ So… shall we start?
 
     SELECT COUNT(DISTINCT ADM1_EN) AS total_province_count
     FROM Thailand_adminboundaries;
-
+    
+<details>
+  <summary><strong>Click to view the output</strong></summary>
 <img src="image/SQL_count_province.JPG" alt="SQL_count_province" width="450" height="450"/>  
+</details>
+
 
 **💡Explanation:**
 * `COUNT(...)`: Counts the number of records.  
@@ -194,13 +227,19 @@ So… shall we start?
 
 ### 10. Exporting: You can export the results to a CSV or Excel file by clicking the Export button.
 
-
+<details>
+  <summary><strong>Click to view the output</strong></summary>
 <img src="image/SQL_exporting.JPG" alt="SQL_exporting" width="450" height="450"/>
+</details>  
+
+---
 
 ### Final Thoughts 💬  
 Thanks for reading!  
 If you found this helpful, feel free to ⭐ the repo or leave a comment.  
-Let’s keep learning and growing together! 🌱  
+Let’s keep learning and growing together! 🌱   
+
+---
 
 #### 📌Common SQL Aggregate Functions 
 Function	- Description   
@@ -221,7 +260,7 @@ Function	- Description
 `CREATE INDEX`	- Adds an index for faster search    
 `DROP INDEX`	  - Removes an index    
 
-
+---
 #### 📚 Keep Learning!  
 Here are some beginner-friendly SQL learning resources:  
 * W3Schools SQL Tutorial - https://www.w3schools.com/sql/  
