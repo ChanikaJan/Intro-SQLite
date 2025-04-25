@@ -42,8 +42,9 @@ So… shall we start?
 ## Basic SQL Queries in SQLite Online 💻  
 ###  1. View All Records    
 
-    
-    SELECT * FROM Thailand_adminboundaries;    
+ ```sql   
+    SELECT * FROM Thailand_adminboundaries;
+ ```    
 
 <details>
   <summary><strong>Click to view the output</strong></summary>
@@ -61,9 +62,10 @@ So… shall we start?
   
 ### 2. View the First 10 Rows
 
-    
-    SELECT * FROM Thailand_adminboundaries  
-    LIMIT 10;  
+```sql
+   SELECT * FROM Thailand_adminboundaries  
+   LIMIT 10;
+```  
 
 <details>
   <summary><strong>Click to view the output</strong></summary>
@@ -77,11 +79,13 @@ So… shall we start?
 
 ### 3. Total Area by Province
 
+ ```sql 
     SELECT ADM1_EN AS province, 
        SUM(area_sqkm) AS total_area_sqkm
     FROM Thailand_adminboundaries
     GROUP BY ADM1_EN
     ORDER BY total_area_sqkm DESC;
+ ```
 
 
 <details>
@@ -100,13 +104,13 @@ So… shall we start?
 
 
 ### 3.1 Rounded to 2 Decimal Places 
-
+ ```sql 
     SELECT ADM1_EN AS province, 
            ROUND(SUM(area_sqkm), 2) AS total_area_sqkm
     FROM Thailand_adminboundaries
     GROUP BY ADM1_EN
     ORDER BY total_area_sqkm DESC;
-
+ ```
     
 <details>
   <summary><strong>Click to view the output</strong></summary>
@@ -120,13 +124,13 @@ So… shall we start?
 
 
 ### 4. Total Area by District
-
+ ```sql 
     SELECT ADM1_EN AS province,
           ADM2_EN AS district,
           ROUND(area_sqkm, 2) AS area_sqkm_district
     FROM Thailand_adminboundaries
     ORDER BY ADM1_EN;
-
+ ```
 <details>
   <summary><strong>Click to view the output</strong></summary>
 <img src="image/SQL_total_area_district2dijits.JPG" alt="SQL_total_area_district2dijits" width="450" height="450"/>   
@@ -139,14 +143,14 @@ So… shall we start?
 
 
 ### 5. Show District Areas (Rounded) in One Province Only
-
+ ```sql 
     SELECT ADM1_EN AS province,
            ADM2_EN AS district,
            ROUND(area_sqkm, 2) AS area_sqkm_district
     FROM Thailand_adminboundaries
     WHERE ADM1_EN = 'Tak'
     ORDER BY area_sqkm_district DESC;
-
+ ```
 <details>
   <summary><strong>Click to view the output</strong></summary>
  <img src="image/SQL_filter_province.JPG" alt="SQL_filter_province" width="450" height="450"/>  
@@ -160,13 +164,13 @@ So… shall we start?
 
 
 ### 6.  Count Districts in Each Province
-
+ ```sql 
     SELECT ADM1_EN AS province,
            COUNT(ADM2_EN) AS district_count
     FROM Thailand_adminboundaries
     GROUP BY ADM1_EN
     ORDER BY district_count DESC;
-
+ ```
 <details>
   <summary><strong>Click to view the output</strong></summary>
 <img src="image/SQL_count_districts.JPG" alt="SQL_count_districts" width="450" height="450"/>  
@@ -179,14 +183,14 @@ So… shall we start?
 
 
 ### 7. Top 10 Largest Districts in Thailand
-
+ ```sql
     SELECT ADM1_EN AS province,
            ADM2_EN AS district,
            area_sqkm
     FROM Thailand_adminboundaries
     ORDER BY area_sqkm DESC
     LIMIT 10;
-
+```
 <details>
   <summary><strong>Click to view the output</strong></summary>
 <img src="image/SQL_top10_provinces.JPG" alt="SQL_top10_provinces" width="450" height="450"/>  
@@ -198,20 +202,20 @@ So… shall we start?
 
 
 ### 8. Calculate Total Area of Thailand
-
+ ```sql
     SELECT SUM(area_sqkm) AS total_area_thailand
     FROM Thailand_adminboundaries;
-
+```
 **💡Explanation:**
  * `SUM(area_sqkm)`: adds up all area values in the dataset.  
  * This gives you the total land area of Thailand.  
 
 
 ### 9. Count Total Number of Provinces
-
+ ```sql
     SELECT COUNT(DISTINCT ADM1_EN) AS total_province_count
     FROM Thailand_adminboundaries;
-    
+   ```  
 <details>
   <summary><strong>Click to view the output</strong></summary>
 <img src="image/SQL_count_province.JPG" alt="SQL_count_province" width="450" height="450"/>  
@@ -227,10 +231,8 @@ So… shall we start?
 
 ### 10. Exporting: You can export the results to a CSV or Excel file by clicking the Export button.
 
-<details>
-  <summary><strong>Click to view the output</strong></summary>
 <img src="image/SQL_exporting.JPG" alt="SQL_exporting" width="450" height="450"/>
-</details>  
+
 
 ---
 
